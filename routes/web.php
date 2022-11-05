@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\Main\AreaController;
+use App\Http\Controllers\Admin\Main\BillController;
+use App\Http\Controllers\Admin\Main\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[AuthController::class,'login']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix'=>'admin'], function (){
+        Route::get('login', [AuthController::class,'login'])->name('admin-login');
+        Route::post('login-check', [AuthController::class,'loginCheck'])->name('login-check');
+
+    Route::group(['middleware' => 'auth:web'], function () {
+        Route::get('logout', [AuthController::class,'logout'])->name('admin.logout');
+        Route::get('home', [MainController::class,'index'])->name('admin.home');
+        Route::resource('areas', AreaController::class);
+        Route::resource('bills', BillController::class);
+        Route::get('bills/print/{id}', [BillController::class,'print'])->name('bill.print');
+        Route::get('bill-area', [BillController::class,'billArea'])->name('bill.area');
+    });
+  });
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

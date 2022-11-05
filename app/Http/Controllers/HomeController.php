@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\User\TripDatatable;
+use App\DataTables\User\TripinDatatable;
+
 use Illuminate\Http\Request;
+use App\Models\Driver;
+use App\Models\Trip;
+
+use Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +28,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+  
+
 }
