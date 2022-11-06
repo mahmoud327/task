@@ -1,8 +1,6 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "formation": { "web": { "size": "free" } } ,
-
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
