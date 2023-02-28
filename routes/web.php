@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Main\AreaController;
 use App\Http\Controllers\Admin\Main\BillController;
 use App\Http\Controllers\Admin\Main\MainController;
 use Illuminate\Support\Facades\Route;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,14 @@ Auth::routes();
 Route::group(['prefix'=>'admin'], function (){
         Route::get('login', [AuthController::class,'login'])->name('admin-login');
         Route::post('login-check', [AuthController::class,'loginCheck'])->name('login-check');
+        Route::get('telgram',function(){
+             $update=Telegram::getUpdates();
+             dd($update);
+             Telegram::sendMessage([
+                'chat_id'=>'-849059038',
+                'text'=>'kjdfjkdfdfjkdfkjkjkjjkdfkjfdkjv'
+             ]);
+        });
 
     Route::group(['middleware' => 'auth:web'], function () {
         Route::get('logout', [AuthController::class,'logout'])->name('admin.logout');

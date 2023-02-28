@@ -1,7 +1,7 @@
 
 
 
-    <a href="{{ route('areas.edit', $id)    }}" class="btn btn-info">
+    <a href="{{ route('bills.edit', $id)    }}" class="btn btn-info">
         <i class="fa fa-edit"></i>
         </a>
 

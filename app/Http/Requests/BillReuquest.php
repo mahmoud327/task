@@ -36,6 +36,7 @@ class BillReuquest extends FormRequest {
             // 'shipping_value'=>'required|numeric',
             // 'cost'=>'required|numeric',
             'consignee'=>'required',
+            'area_id'=>'required|numeric',
             'address'=>'required',
             'phone'=>'required'
         ];

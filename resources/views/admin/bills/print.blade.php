@@ -26,12 +26,12 @@
 
                                     </small>
                                     <small class="p-0 m-0">
-                                        {{ $bill->address }}
+                                        {{ $bill->company_name }}
                                     </small>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                     <div>
-                                        <img src="{{asset('360_F_255979498_vewTRAL5en9T0VBNQlaDBoXHlCvJzpDl.jpg')}}" alt="" width="150">
+                                        <img src="{{asset('img/360_F_255979498_vewTRAL5en9T0VBNQlaDBoXHlCvJzpDl.jpg')}}" alt="" width="150">
                                     </div>
                                     <div>
                                         <h5 class="p-0 m-0">
@@ -59,7 +59,9 @@
                                     </div>
 
                                     <div>
-                                        <img src="{{ asset('img/qr_code_5cdd30e269752.jpg') }}" alt="" width="100">
+                                        {{-- <img src="{{ asset('img/qr_code_5cdd30e269752.jpg') }}" alt="" width="100"> --}}
+                                        {!! QrCode::size(120)->generate('https://www.facebook.com/profile.php?id=100086418624519'); !!}
+
                                     </div>
 
                                 </div>

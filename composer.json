@@ -7,16 +7,17 @@
     "require": {
         "php": "^8.0.2",
         "arinasystems/laravel-json-response": "^1.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.5",
+        "irazasyed/telegram-bot-sdk": "^3.9",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.2",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "yajra/laravel-datatables-buttons": "9.0",
         "proengsoft/laravel-jsvalidation": "^4.4",
-
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "yajra/laravel-datatables-buttons": "9.0",
         "yajra/laravel-datatables-oracle": "10.0"
     },
     "require-dev": {
@@ -33,14 +34,17 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
+        }
 
 
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files" : [
+            "app/Http/helpers.php"
+          ]
     },
     "scripts": {
         "post-autoload-dump": [

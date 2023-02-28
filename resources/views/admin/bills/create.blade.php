@@ -79,7 +79,7 @@
             <div class="col-md-6 input-group mb-3 w-50 ">
                 <label class="input-group-text bg-primary text-white" for="inputGroupSelect01"> نوع البوليصه</label>
 
-                <select class="js-example-basic-multiple w-50" name="type_bill" id="inputGroupSelect01">
+                <select class="js-example-basic-multiple w-50" required name="type_bill" id="inputGroupSelect01">
                     <option value="1">مبلغ مقابل طرد</option>
                     <option value="2">طرد مقابل طرد</option>
                     <option value="3">طرد بدوو مقابل</option>
@@ -192,7 +192,7 @@
             <div class="col-md-6 input-group mb-3 w-50 ">
                 <label class="input-group-text bg-primary text-white" for="inputGroupSelect01"> اسم الشركه </label>
 
-                <input type="text" naem="company_name"class="rounded-2 w-75">
+                <input type="text" name="company_name"  value="Spead Era" class="rounded-2 w-75">
 
 
             </div>

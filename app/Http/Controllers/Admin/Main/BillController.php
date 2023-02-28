@@ -55,6 +55,7 @@ class BillController extends Controller
         if(!$request->date_bills){
             $request['date_bills']=Carbon::now();
         }
+        // $request['company_name']='Spead Era';
         $bill = Bill::create($request->all());
         $code='SE0'.$bill->id.'0';
         $bill-> bill_code= $code;
@@ -83,8 +84,12 @@ class BillController extends Controller
      */
     public function edit($id)
     {
-        $model = Area::findOrFail($id);
-        return view('admin.areas.edit', compact('model'));
+
+        $data=[
+            'areas'=>Area::get(),
+            'bill'=> Bill::findOrFail($id)
+        ];
+        return view('admin.bills.edit')->with($data);
     }
 
     /**
@@ -96,26 +101,12 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
 
-            'cost'          => 'required|numeric',
-            'area_name'          => 'required|unique:areas,area_name,'.$id,
-          ];
 
-          $messages = [
-            'cost.required'         => 'التكلفه  مطلوب',
-            'area_name.required'        => 'اسم المنطقه  مطلوب',
-            'area_name.unique'        => 'اسم المنطقه  موجود من قبل',
-            'cost.numeric'        => ' يجب اب يكون رقم مطلوب',
-
-          ];
-
-        $this->validate($request, $rules, $messages);
-
-        $record = Area::findOrFail($id);
+        $record = Bill::findOrFail($id);
         $record->update($request->all());
         flash()->success("تم التعديل بنجاح");
-        return redirect(route('areas.index'));
+        return redirect(route('bill.print',$bill->id));
     }
 
     /**
@@ -143,7 +134,12 @@ class BillController extends Controller
 	}
 
     public function print($id){
+
       $bill= Bill::find($id);
+    //   \QrCode::size(500)
+    //   ->format('png')
+    //   ->generate('ItSolutionStuff.com', public_path('img/qr_code.jpg'));
+
       return view('admin.bills.print',compact('bill'));
 
     }
